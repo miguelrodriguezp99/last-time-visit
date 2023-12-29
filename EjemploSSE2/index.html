@@ -1,0 +1,15 @@
+<h1>Hola Mundo!</h1>
+<ul id="content"></ul>
+
+<script>
+  const source = new EventSource("/counter");
+  const ul = document.getElementById("content");
+
+  source.addEventListener("update", (event) => {
+    console.log(event);
+
+    const li = document.createElement("li");
+    li.innerHTML = event.data;
+    ul.appendChild(li);
+  });
+</script>
